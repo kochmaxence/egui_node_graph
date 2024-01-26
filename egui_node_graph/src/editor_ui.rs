@@ -197,6 +197,13 @@ where
         // executed at the end of this function.
         let mut delayed_responses: Vec<NodeResponse<UserResponse, NodeData>> = prepend_responses;
 
+        // Delete selected nodes when Key::Delete is pressed
+        if ui.ctx().input(|i| i.key_pressed(Key::Delete)) {
+            for nid in &self.selected_nodes {
+                delayed_responses.push(NodeResponse::DeleteNodeUi(*nid));
+            }
+        }
+
         // Used to detect when the background was clicked
         let mut click_on_background = false;
 
