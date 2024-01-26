@@ -1,6 +1,5 @@
 use std::collections::HashSet;
 
-use crate::color_hex_utils::*;
 use crate::utils::ColorUtils;
 
 use super::*;
@@ -593,11 +592,11 @@ where
         let background_color;
         let text_color;
         if ui.visuals().dark_mode {
-            background_color = color_from_hex("#3f3f3f").unwrap();
-            text_color = color_from_hex("#fefefe").unwrap();
+            background_color = Color32::from_hex("#3f3f3f").unwrap();
+            text_color = Color32::from_hex("#fefefe").unwrap();
         } else {
-            background_color = color_from_hex("#ffffff").unwrap();
-            text_color = color_from_hex("#505050").unwrap();
+            background_color = Color32::from_hex("#ffffff").unwrap();
+            text_color = Color32::from_hex("#505050").unwrap();
         }
 
         ui.visuals_mut().widgets.noninteractive.fg_stroke =
@@ -1013,22 +1012,22 @@ where
         let dark_mode = ui.visuals().dark_mode;
         let color = if resp.clicked() {
             if dark_mode {
-                color_from_hex("#ffffff").unwrap()
+                Color32::from_hex("#ffffff").unwrap()
             } else {
-                color_from_hex("#000000").unwrap()
+                Color32::from_hex("#000000").unwrap()
             }
         } else if resp.hovered() {
             if dark_mode {
-                color_from_hex("#dddddd").unwrap()
+                Color32::from_hex("#dddddd").unwrap()
             } else {
-                color_from_hex("#222222").unwrap()
+                Color32::from_hex("#222222").unwrap()
             }
         } else {
             #[allow(clippy::collapsible_else_if)]
             if dark_mode {
-                color_from_hex("#aaaaaa").unwrap()
+                Color32::from_hex("#aaaaaa").unwrap()
             } else {
-                color_from_hex("#555555").unwrap()
+                Color32::from_hex("#555555").unwrap()
             }
         };
         let stroke = Stroke {
